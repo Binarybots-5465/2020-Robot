@@ -16,4 +16,9 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    /* HID Constants */
+    public static String driveJoystickName = "Logitech Dual Action";
+    public static String auxJoystickName = "Controller (HORIPAD S)";
+
 }
