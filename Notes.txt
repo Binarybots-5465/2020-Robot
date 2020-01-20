@@ -7,7 +7,7 @@ Goals:
 
 Notes for this year:
  *We will use pneumatics this year for climbing and for the control panel
- *Currently (1st week) we will be using two controllers (Gamecube and Generic Logitech)
+ *Currently (1st week) we will be using two controllers (Game Cube and Generic Logitech)
 
 
 Concepts that might be useful later in design:
