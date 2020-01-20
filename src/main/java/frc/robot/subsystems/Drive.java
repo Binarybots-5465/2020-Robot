@@ -131,8 +131,8 @@ public class Drive extends SubsystemBase {
         rightForwardTalon.configClosedLoopPeriod(0, Constants.PIDClosedLoopTimeMs, Constants.talonEncoderTimeout);
         rightForwardTalon.configClosedLoopPeriod(1, Constants.PIDClosedLoopTimeMs, Constants.talonEncoderTimeout);
     
-         //False means the SRX's local output is PID0 + PID1, and the SRX on the other side is PID0 - PID1
-         // True means the SRX's local output is PID0 - PID1, and the SRX on the other side is PID0 + PID1.
+        //False means the SRX's local output is PID0 + PID1, and the SRX on the other side is PID0 - PID1
+        // True means the SRX's local output is PID0 - PID1, and the SRX on the other side is PID0 + PID1.
         rightForwardTalon.configAuxPIDPolarity(false, Constants.talonEncoderTimeout);
 
         zeroEncoders(); //Start the motor's fresh off the bat.
