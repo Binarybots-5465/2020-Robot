@@ -34,12 +34,6 @@ public class Drive extends SubsystemBase {
   
     private DifferentialDrive diffDrive;
 
-    public void zeroEncoders() {
-        System.out.println("All SRX drive encoders ZEROd.");
-        leftForwardTalon.getSensorCollection().setQuadraturePosition(0, Constants.talonEncoderTimeout);
-        rightForwardTalon.getSensorCollection().setQuadraturePosition(0, Constants.talonEncoderTimeout);
-    }
-
     public Drive() {
 
         leftForwardTalon = new WPI_TalonSRX(Constants.leftTalonID[0]);
@@ -157,6 +151,16 @@ public class Drive extends SubsystemBase {
     public void setRaw(double forw, double rot) {
 
         diffDrive.arcadeDrive(forw, -1 * rot, true); //Negate the z rotation value (r) because the joystick's axis rotates CCW.
+    }
+
+    /**
+     * Zero the Talon SRX's quadrature encoders.
+     */
+    public void zeroEncoders() {
+
+        leftForwardTalon.getSensorCollection().setQuadraturePosition(0, Constants.talonEncoderTimeout);
+        rightForwardTalon.getSensorCollection().setQuadraturePosition(0, Constants.talonEncoderTimeout);
+        System.out.println("All SRX drive encoders zeroed.");
     }
 
     @Override
