@@ -56,7 +56,7 @@ public class RobotContainer {
     m_driveSubsystem.setDefaultCommand(
         new RunCommand(() -> m_driveSubsystem
             .setRaw(m_driveJoystick.getY(GenericHID.Hand.kLeft),
-                    m_driveJoystick.getRawAxis(2)), m_driveSubsystem));
+                    m_driveJoystick.getRawAxis( Constants.driveJoystickRotationAxisNum )), m_driveSubsystem));
   }
 
   /**

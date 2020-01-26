@@ -21,13 +21,16 @@ public final class Constants {
     
     /* HID Constants */
     
-    //Set's the name for configureJoysticks() in RobotContainer.java to search for and its roles.
+    //Set's the name for configureJoysticks() in RobotContainer.java to search for
     public static String driveJoystickName = "Logitech Dual Action";
     public static String auxJoystickName = "Controller (HORIPAD S)";
 
+    //Joystick Axis Values
+    public static int driveJoystickRotationAxisNum = 2; //The Logitech Dual Action controller's right-hand-side joystick does not correctly 
+
     /* Drive Constants */
 
-    //Talon ID's
+    //Talon SRX ID's
     public static final double driveDeadband = 0.01; //1% Deadband.
     public static int[] rightTalonID = new int[]{1, 2}; //Encoder on 1.
     public static int[] leftTalonID = new int[]{3, 4}; //Encoder on 3.

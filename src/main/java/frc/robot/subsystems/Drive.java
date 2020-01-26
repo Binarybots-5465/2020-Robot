@@ -142,7 +142,7 @@ public class Drive extends SubsystemBase {
     }
 
     /**
-     * Set's the raw speed of the drivetrain using an arcade style.
+     * Sets the raw speed of the drivetrain using an arcade style.
      * @param forw Value from -1.0 to 1.0 representing the forward (x-axis) percentage of the drivetrain's speed
      * @param rot  Value from -1.0 to 1.0 representing the rotation around the z-axis (CW is postive)
      */
