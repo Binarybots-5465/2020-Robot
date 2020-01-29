@@ -21,12 +21,13 @@ public final class Constants {
     
     /* HID Constants */
     
-    //Set's the name for configureJoysticks() in RobotContainer.java to search for
+    //Set's the name for configureJoysticks() in RobotContainer.java to search for.
     public static String driveJoystickName = "Logitech Dual Action";
     public static String auxJoystickName = "Controller (HORIPAD S)";
 
     //Joystick Axis Values
-    public static int driveJoystickRotationAxisNum = 2; //The Logitech Dual Action controller's right-hand-side joystick does not correctly 
+    public static int driveJoystickRotationAxisNum = 2; //The Logitech Dual Action controller's right-hand-side joystick does not correctly.
+    public static double driveJoystickTurnCoefficient = 0.25;
 
     /* Drive Constants */
 
@@ -78,4 +79,9 @@ public final class Constants {
 
     //Sets constant for the length of time the PID period runs
     public final static int PIDClosedLoopTimeMs = 1; //1 ms per loop cycle.
+
+    /* Pneumatics Constants */
+
+    //Sets the Pneumatic Control Module's (PCM) CAN device ID.
+    public final static int PCMCANID = 0;
 }
