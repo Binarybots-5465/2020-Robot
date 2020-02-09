@@ -12,3 +12,7 @@ Notes for this year:
 
 Concepts that might be useful later in design:
  *We could use the ADXRS450 gyroscope mounted vertically to determine if we're level when climbing
+
+Pneumatics notes:
+ * Solenoid for the stopper (slides out and hits plate) for the climber is normally deactivated
+ * Solenoid for the balls will normally be activated (so the balls can't go through)  

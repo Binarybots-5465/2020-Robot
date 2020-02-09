@@ -84,4 +84,12 @@ public final class Constants {
 
     //Sets the Pneumatic Control Module's (PCM) CAN device ID.
     public final static int PCMCANID = 0;
+
+    //Sets the intake / ball catcher's PCM port IDs
+    public final static int PCMIntakeForwardPortID = 0;
+    public final static int PCMIntakeReversePortID = 1;
+
+    //Sets the climber's hard stop PCM port IDs
+    public final static int PCMClimberForwardPortID = 0;
+    public final static int PCMClimberReversePortID = 0;
 }
