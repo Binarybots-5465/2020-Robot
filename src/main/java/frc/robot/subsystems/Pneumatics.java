@@ -16,7 +16,7 @@ public class Pneumatics extends SubsystemBase {
   public static Compressor pneumaticsCompressor = new Compressor(Constants.PCMCANID);
 
   public Pneumatics() {
-    
+    pneumaticsCompressor.start();
   }
 
   @Override
