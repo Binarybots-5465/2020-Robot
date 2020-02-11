@@ -21,6 +21,10 @@ public class Pneumatics extends SubsystemBase {
 
   public Pneumatics() {
     pneumaticsCompressor.start();
+
+    //Sets the default positions for the pneumatics system
+    setIntakeSolenoid(Constants.PCMIntakeInitialPosition);
+    setClimberSolenoid(Constants.PCMClimberInitialPosition);
   }
 
   public void setIntakeSolenoid(DoubleSolenoid.Value position) {

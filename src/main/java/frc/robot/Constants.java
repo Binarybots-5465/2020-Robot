@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.PIDGains;
 
 /**
@@ -92,4 +94,8 @@ public final class Constants {
     //Sets the climber's hard stop PCM port IDs
     public final static int PCMClimberForwardPortID = 0;
     public final static int PCMClimberReversePortID = 0;
+
+    //Set's the solenoid's default position
+    public final static DoubleSolenoid.Value PCMIntakeInitialPosition = DoubleSolenoid.Value.kForward; //The intake will by default block balls from passing through it
+    public final static DoubleSolenoid.Value PCMClimberInitialPosition = DoubleSolenoid.Value.kReverse; //The climber's stopper will by default be retracted to allow the bar to move 
 }
