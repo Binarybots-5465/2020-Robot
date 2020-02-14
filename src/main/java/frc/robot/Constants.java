@@ -97,5 +97,6 @@ public final class Constants {
 
     //Set's the solenoid's default position
     public final static DoubleSolenoid.Value PCMIntakeInitialPosition = DoubleSolenoid.Value.kForward; //The intake will by default block balls from passing through it
-    public final static DoubleSolenoid.Value PCMClimberInitialPosition = DoubleSolenoid.Value.kReverse; //The climber's stopper will by default be retracted to allow the bar to move 
+    public final static DoubleSolenoid.Value PCMClimberInitialPosition = DoubleSolenoid.Value.kForward; //The climber's stopper will by default be extended to allow to 
+                                                                                                        // prevent the mechanism from de-compressing. 
 }
