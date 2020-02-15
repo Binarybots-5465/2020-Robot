@@ -24,11 +24,11 @@ public final class Constants {
     /* HID Constants */
     
     //Set's the name for configureJoysticks() in RobotContainer.java to search for.
-    public static String driveJoystickName = "Logitech Dual Action";
+    public static String driveJoystickName = "Wireless Controller";
     public static String auxJoystickName = "Controller (HORIPAD S)";
 
     //Joystick Axis Values
-    public static int driveJoystickRotationAxisNum = 2; //The Logitech Dual Action controller's right-hand-side joystick does not correctly.
+    public static int driveJoystickRotationAxisNum = 2; //The joystick's controller's right-hand-side joystick does not correctly.
     public static double driveJoystickTurnCoefficient = 0.25;
 
     /* Drive Constants */
