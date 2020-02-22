@@ -30,6 +30,10 @@ public final class Constants {
     public static int driveJoystickRotationAxisNum = 2; //The joystick's controller's right-hand-side joystick does not correctly.
     public static double driveJoystickTurnCoefficient = 0.25;
 
+    //Joystick Button Values
+    public static int auxAButton = 1; //Represents the A button on the Horipad Gamecube controller.
+    public static int auxXButton = 3; //Represents the X button on the Horipad Gamecube controller.
+
     /* Drive Constants */
 
     //Talon SRX ID's
@@ -86,16 +90,22 @@ public final class Constants {
     //Sets the Pneumatic Control Module's (PCM) CAN device ID.
     public final static int PCMCANID = 0;
 
-    //Sets the intake / ball catcher's PCM port IDs
+    //Sets the intake / ball catcher's PCM port IDs.
     public final static int PCMIntakeForwardPortID = 0;
     public final static int PCMIntakeReversePortID = 1;
 
-    //Sets the climber's hard stop PCM port IDs
-    public final static int PCMClimberForwardPortID = 0;
-    public final static int PCMClimberReversePortID = 0;
+    //Sets the climber's hard stop PCM port IDs.
+    public final static int PCMClimberForwardPortID = 2;
+    public final static int PCMClimberReversePortID = 3;
+
+    //Sets the intake's backside ball stopper PCM port IDs.
+    public final static int PCMBackBallStopperForwardPortID = 4;
+    public final static int PCMBackBallStopperReversePortID = 5;
 
     //Set's the solenoid's default position
     public final static DoubleSolenoid.Value PCMIntakeInitialPosition = DoubleSolenoid.Value.kForward; //The intake will by default block balls from passing through it
     public final static DoubleSolenoid.Value PCMClimberInitialPosition = DoubleSolenoid.Value.kForward; //The climber's stopper will by default be extended to allow to 
                                                                                                         // prevent the mechanism from de-compressing. 
+    public final static DoubleSolenoid.Value PCMBackBallStopperInitialPosition = DoubleSolenoid.Value.kReverse; //The solenoid that will stop the balls from falling out the back
+                                                                                                                // end will by default be not active
 }

@@ -8,19 +8,27 @@
 package frc.robot;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import edu.wpi.first.wpilibj.DriverStation;
-
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
-
-import frc.robot.subsystems.Drive;
 
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.SelectCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button;
+import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Pneumatics;
+import edu.wpi.first.wpilibj2.command.button.*;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+
+import frc.robot.commands.ToggleIntakeSolenoid;
+import frc.robot.commands.ToggleBackBallStopperSolenoid;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -30,16 +38,22 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
  */
 public class RobotContainer {
   
-  // The robot's subsystems and commands are defined here...
+  //Example
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  //Subsystems
   private final Drive m_driveSubsystem = new Drive();
+  private final Pneumatics m_pnSubsystem = new Pneumatics();
 
+  //HID
   public Joystick m_driveJoystick;
   public Joystick m_auxJoystick;
+
+  public JoystickButton m_intakeMechanismToggleButton;
+  public JoystickButton m_backBallStopperMechanismToggleButton;
   
+  //Other
   private final DriverStation ds = DriverStation.getInstance();
 
   /**
@@ -94,8 +108,11 @@ public class RobotContainer {
       m_driveJoystick = new Joystick(0);
       m_auxJoystick = new Joystick(1);
     }
-
     
+    m_intakeMechanismToggleButton = new JoystickButton(m_auxJoystick, Constants.auxAButton);
+    m_intakeMechanismToggleButton.whenPressed( new ToggleIntakeSolenoid(m_pnSubsystem) ); //Sets the intake solenoid to toggle when the A button is pressed on the Aux joystick
+    m_backBallStopperMechanismToggleButton = new JoystickButton(m_auxJoystick, Constants.auxXButton);
+    m_backBallStopperMechanismToggleButton.whenPressed( new ToggleBackBallStopperSolenoid(m_pnSubsystem) );
   }
 
 

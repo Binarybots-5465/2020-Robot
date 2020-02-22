@@ -18,6 +18,11 @@ public class Pneumatics extends SubsystemBase {
 
   public static DoubleSolenoid intakeSolenoid = new DoubleSolenoid(Constants.PCMIntakeForwardPortID, Constants.PCMIntakeReversePortID);
   public static DoubleSolenoid climberSolenoid = new DoubleSolenoid(Constants.PCMClimberForwardPortID, Constants.PCMClimberReversePortID);
+  public static DoubleSolenoid backBallStopperSolenoid = new DoubleSolenoid(Constants.PCMBackBallStopperForwardPortID, Constants.PCMBackBallStopperReversePortID);
+
+  public static DoubleSolenoid.Value intakeSolenoidStatus;
+
+  public static DoubleSolenoid.Value backBallStopperSolenoidStatus;
 
   public Pneumatics() {
     pneumaticsCompressor.start();
@@ -25,6 +30,10 @@ public class Pneumatics extends SubsystemBase {
     //Sets the default positions for the pneumatics system
     setIntakeSolenoid(Constants.PCMIntakeInitialPosition);
     setClimberSolenoid(Constants.PCMClimberInitialPosition);
+    setBackBallStopperSolenoid(Constants.PCMBackBallStopperInitialPosition);
+
+    intakeSolenoidStatus = Constants.PCMIntakeInitialPosition;
+    backBallStopperSolenoidStatus = Constants.PCMBackBallStopperInitialPosition;
   }
 
   public void setIntakeSolenoid(DoubleSolenoid.Value position) {
@@ -33,6 +42,34 @@ public class Pneumatics extends SubsystemBase {
 
   public void setClimberSolenoid(DoubleSolenoid.Value position) {
     climberSolenoid.set(position);
+  }
+
+  public void setBackBallStopperSolenoid(DoubleSolenoid.Value position) {
+    backBallStopperSolenoid.set(position);
+  }
+
+  public void toggleIntakeSolenoid() {
+    System.out.println("toggled intake");
+    //Inverts the state of the solenoid.
+    if(intakeSolenoidStatus == DoubleSolenoid.Value.kForward) { 
+      intakeSolenoidStatus = DoubleSolenoid.Value.kReverse;
+    } else {
+      intakeSolenoidStatus = DoubleSolenoid.Value.kForward;
+    }
+    System.out.println("" + intakeSolenoidStatus);
+    setIntakeSolenoid(intakeSolenoidStatus);
+  }
+
+  public void toggleBackBallStopperSolenoid() {
+
+    //Inverts the state of the stopper solenoid.
+    if(backBallStopperSolenoidStatus == DoubleSolenoid.Value.kForward) { 
+      backBallStopperSolenoidStatus = DoubleSolenoid.Value.kReverse;
+    } else {
+      backBallStopperSolenoidStatus = DoubleSolenoid.Value.kForward;
+    }
+
+    setBackBallStopperSolenoid(backBallStopperSolenoidStatus);
   }
 
   @Override

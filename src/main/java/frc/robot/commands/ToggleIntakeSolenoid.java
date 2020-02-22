@@ -7,14 +7,13 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Pneumatics;
 
-public class ReleaseClimberSolenoid extends CommandBase {
+public class ToggleIntakeSolenoid extends CommandBase {
   private final Pneumatics m_pnSubsystem;
 
-  public ReleaseClimberSolenoid(Pneumatics pnSubsystem) {
+  public ToggleIntakeSolenoid(Pneumatics pnSubsystem) {
     m_pnSubsystem = pnSubsystem;
 
     addRequirements(m_pnSubsystem);
@@ -23,7 +22,7 @@ public class ReleaseClimberSolenoid extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_pnSubsystem.setClimberSolenoid(DoubleSolenoid.Value.kReverse); //Retracts the piston and releases the mechanism so the wench can move
+    m_pnSubsystem.toggleIntakeSolenoid();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -39,6 +38,6 @@ public class ReleaseClimberSolenoid extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true; //Exits immediately after called, the solenoid 'latches' the piston state and stays
+    return true; //Exits immediately after called, the solenoid 'latches' the piston state and stays.
   }
 }
