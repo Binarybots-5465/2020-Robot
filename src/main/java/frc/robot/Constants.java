@@ -38,12 +38,12 @@ public final class Constants {
 
     //Talon SRX ID's
     public static final double driveDeadband = 0.01; //1% Deadband.
-    public static int[] rightTalonID = new int[]{1, 2}; //Encoder on 1.
-    public static int[] leftTalonID = new int[]{3, 4}; //Encoder on 3.
+    public static int[] rightTalonID = new int[]{2, 3}; //Encoder on 1.
+    public static int[] leftTalonID = new int[]{4, 5}; //Encoder on 3.
 
     //Encoder Positions
-    public static int leftTalonEncoderID = 1; //The Talon SRX ID that the encoder is mounted to.
-    public static int rightTalonEncoderID = 3;
+    public static int leftTalonEncoderID = 2; //The Talon SRX ID that the encoder is mounted to.
+    public static int rightTalonEncoderID = 4;
     
     public static double encoderUnitsPerRotation = 4096; //4096 units per rotation given by encoder (per 100ms).
     public static int talonEncoderTimeout = 30; //100 ms timeout for encoder to respond.
