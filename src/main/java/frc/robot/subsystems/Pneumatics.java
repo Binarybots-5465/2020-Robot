@@ -49,19 +49,17 @@ public class Pneumatics extends SubsystemBase {
   }
 
   public void toggleIntakeSolenoid() {
-    System.out.println("toggled intake");
     //Inverts the state of the solenoid.
     if(intakeSolenoidStatus == DoubleSolenoid.Value.kForward) { 
       intakeSolenoidStatus = DoubleSolenoid.Value.kReverse;
     } else {
       intakeSolenoidStatus = DoubleSolenoid.Value.kForward;
     }
-    System.out.println("" + intakeSolenoidStatus);
+    
     setIntakeSolenoid(intakeSolenoidStatus);
   }
 
   public void toggleBackBallStopperSolenoid() {
-
     //Inverts the state of the stopper solenoid.
     if(backBallStopperSolenoidStatus == DoubleSolenoid.Value.kForward) { 
       backBallStopperSolenoidStatus = DoubleSolenoid.Value.kReverse;
