@@ -32,6 +32,7 @@ public class Pneumatics extends SubsystemBase {
     setClimberSolenoid(Constants.PCMClimberInitialPosition);
     setBackBallStopperSolenoid(Constants.PCMBackBallStopperInitialPosition);
 
+    //Set's initial states for the solenoids
     intakeSolenoidStatus = Constants.PCMIntakeInitialPosition;
     backBallStopperSolenoidStatus = Constants.PCMBackBallStopperInitialPosition;
   }
@@ -55,7 +56,7 @@ public class Pneumatics extends SubsystemBase {
     } else {
       intakeSolenoidStatus = DoubleSolenoid.Value.kForward;
     }
-    
+
     setIntakeSolenoid(intakeSolenoidStatus);
   }
 
