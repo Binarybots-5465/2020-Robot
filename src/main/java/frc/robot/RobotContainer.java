@@ -11,22 +11,16 @@ import java.util.ArrayList;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
-
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RunCommand;
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
 
 import frc.robot.subsystems.Drive;
-import frc.robot.subsystems.Pneumatics;
 
-import frc.robot.commands.ToggleIntakeSolenoid;
-import frc.robot.commands.ToggleBackBallStopperSolenoid;
+import frc.robot.commands.ExampleCommand;
+import frc.robot.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -36,24 +30,21 @@ import frc.robot.commands.ToggleBackBallStopperSolenoid;
  */
 public class RobotContainer {
   
-  //Example
+  // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
-  //Subsystems
   private final Drive m_driveSubsystem = new Drive();
-  private final Pneumatics m_pnSubsystem = new Pneumatics();
 
-  //HID
-  public Joystick m_driveJoystick = new Joystick(0); //Defaults to ports 0 & 1 if configureJoysticks() can't find it later.
-  public Joystick m_auxJoystick = new Joystick(1);
-
-  public JoystickButton m_intakeMechanismToggleButton;
-  public JoystickButton m_backBallStopperMechanismToggleButton;
+  public Joystick m_driveJoystick;
+  public Joystick m_auxJoystick;
   
-  //Other
   private final DriverStation ds = DriverStation.getInstance();
 
+  /**
+   * The container for the robot.  Contains subsystems, OI devices, and commands.
+   */
   public RobotContainer() {
 
     //Configure the Joysticks and button bindings.
@@ -99,13 +90,10 @@ public class RobotContainer {
 
       System.out.println("\n Make sure you can see both (" + Constants.driveJoystickName + ") and (" + Constants.auxJoystickName + ") in the driverstation!");
       System.out.println("Assigned the Drive joystick to PORT 0 & Aux joystick to PORT 1.");
+      
+      m_driveJoystick = new Joystick(0);
+      m_auxJoystick = new Joystick(1);
     }
-    
-    m_intakeMechanismToggleButton = new JoystickButton(m_auxJoystick, Constants.auxAButton);
-    m_intakeMechanismToggleButton.whenPressed( new ToggleIntakeSolenoid(m_pnSubsystem) ); //Sets the intake solenoid to toggle when the A button is pressed on the Aux joystick
-    
-    m_backBallStopperMechanismToggleButton = new JoystickButton(m_auxJoystick, Constants.auxXButton);
-    m_backBallStopperMechanismToggleButton.whenPressed( new ToggleBackBallStopperSolenoid(m_pnSubsystem) );
   }
 
 

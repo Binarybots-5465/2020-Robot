@@ -1,6 +1,0 @@
-Pneumatics notes:
- * Solenoid for the stopper (retracts [REVERSE] to release the spring loaded lift) for the climber is normally activated [FORWARD] (and motors will wind back [REVERSE] and compress the mechanism)
- * Solenoid for the balls will normally be activated [FORWARD] (so the balls can't go through)  
-
- * When the elevator is compressed (and in the starting match state) after completely climbing the piston for the climber will extend [FORWARD] (locking the plate and the mechanism) 
-    and the motors will HALT (to prevent strain on the spring loaded mechanism and gears)

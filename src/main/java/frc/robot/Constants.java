@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.PIDGains;
 
 /**
@@ -22,29 +21,23 @@ public final class Constants {
     
     /* HID Constants */
     
-    //Set's the name for configureJoysticks() in RobotContainer.java to search for.
-    public static String driveJoystickName = "Wireless Controller";
+    //Set's the name for configureJoysticks() in RobotContainer.java to search for
+    public static String driveJoystickName = "Logitech Dual Action";
     public static String auxJoystickName = "Controller (HORIPAD S)";
 
     //Joystick Axis Values
-    public static int driveJoystickRotationAxisNum = 2; //The Joystick class doesn't correctly read the right hand side's input (the driverstation reports it under a different axis)
-                                                        // reading the value from the axis number will correct this.
-    public static double driveJoystickTurnCoefficient = 0.25;
-
-    //Joystick Button Values
-    public static int auxAButton = 1; //Represents the A button on the Horipad Gamecube controller.
-    public static int auxXButton = 3; //Represents the X button on the Horipad Gamecube controller.
+    public static int driveJoystickRotationAxisNum = 2; //The Logitech Dual Action controller's right-hand-side joystick does not correctly 
 
     /* Drive Constants */
 
     //Talon SRX ID's
     public static final double driveDeadband = 0.01; //1% Deadband.
-    public static int[] rightTalonID = new int[]{2, 3}; //Encoder on 1.
-    public static int[] leftTalonID = new int[]{4, 5}; //Encoder on 3.
+    public static int[] rightTalonID = new int[]{1, 2}; //Encoder on 1.
+    public static int[] leftTalonID = new int[]{3, 4}; //Encoder on 3.
 
     //Encoder Positions
-    public static int leftTalonEncoderID = 2; //The Talon SRX ID that the encoder is mounted to.
-    public static int rightTalonEncoderID = 4;
+    public static int leftTalonEncoderID = 1; //The Talon SRX ID that the encoder is mounted to.
+    public static int rightTalonEncoderID = 3;
     
     public static double encoderUnitsPerRotation = 4096; //4096 units per rotation given by encoder (per 100ms).
     public static int talonEncoderTimeout = 30; //100 ms timeout for encoder to respond.
@@ -85,28 +78,4 @@ public final class Constants {
 
     //Sets constant for the length of time the PID period runs
     public final static int PIDClosedLoopTimeMs = 1; //1 ms per loop cycle.
-
-    /* Pneumatics Constants */
-
-    //Sets the Pneumatic Control Module's (PCM) CAN device ID.
-    public final static int PCMCANID = 0;
-
-    //Sets the intake / ball catcher's PCM port IDs.
-    public final static int PCMIntakeForwardPortID = 0;
-    public final static int PCMIntakeReversePortID = 1;
-
-    //Sets the climber's hard stop PCM port IDs.
-    public final static int PCMClimberForwardPortID = 2;
-    public final static int PCMClimberReversePortID = 3;
-
-    //Sets the intake's backside ball stopper PCM port IDs.
-    public final static int PCMBackBallStopperForwardPortID = 4;
-    public final static int PCMBackBallStopperReversePortID = 5;
-
-    //Set's the solenoid's default position
-    public final static DoubleSolenoid.Value PCMIntakeInitialPosition = DoubleSolenoid.Value.kForward; //The intake will by default block balls from passing through it
-    public final static DoubleSolenoid.Value PCMClimberInitialPosition = DoubleSolenoid.Value.kForward; //The climber's stopper will by default be extended to allow to 
-                                                                                                        // prevent the mechanism from de-compressing. 
-    public final static DoubleSolenoid.Value PCMBackBallStopperInitialPosition = DoubleSolenoid.Value.kReverse; //The solenoid that will stop the balls from falling out the back
-                                                                                                                // end will by default be not active
 }
