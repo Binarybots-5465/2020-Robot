@@ -27,7 +27,8 @@ public final class Constants {
     public static String auxJoystickName = "Controller (HORIPAD S)";
 
     //Joystick Axis Values
-    public static int driveJoystickRotationAxisNum = 2; //The joystick's controller's right-hand-side joystick does not correctly.
+    public static int driveJoystickRotationAxisNum = 2; //The Joystick class doesn't correctly read the right hand side's input (the driverstation reports it under a different axis)
+                                                        // reading the value from the axis number will correct this.
     public static double driveJoystickTurnCoefficient = 0.25;
 
     //Joystick Button Values
