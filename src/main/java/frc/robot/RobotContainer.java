@@ -45,8 +45,8 @@ public class RobotContainer {
   private final Pneumatics m_pnSubsystem = new Pneumatics();
 
   //HID
-  public Joystick m_driveJoystick;
-  public Joystick m_auxJoystick;
+  public Joystick m_driveJoystick = new Joystick(0); //Defaults to ports 0 & 1 if configureJoysticks() can't find it later.
+  public Joystick m_auxJoystick = new Joystick(1);
 
   public JoystickButton m_intakeMechanismToggleButton;
   public JoystickButton m_backBallStopperMechanismToggleButton;
@@ -99,9 +99,6 @@ public class RobotContainer {
 
       System.out.println("\n Make sure you can see both (" + Constants.driveJoystickName + ") and (" + Constants.auxJoystickName + ") in the driverstation!");
       System.out.println("Assigned the Drive joystick to PORT 0 & Aux joystick to PORT 1.");
-      
-      m_driveJoystick = new Joystick(0);
-      m_auxJoystick = new Joystick(1);
     }
     
     m_intakeMechanismToggleButton = new JoystickButton(m_auxJoystick, Constants.auxAButton);
