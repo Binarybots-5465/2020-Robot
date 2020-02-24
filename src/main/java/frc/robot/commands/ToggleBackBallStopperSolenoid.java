@@ -11,18 +11,18 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Pneumatics;
 
 public class ToggleBackBallStopperSolenoid extends CommandBase {
-  private final Pneumatics m_pnSubsystem;
+  private final Pneumatics m_pneumaticsSubsystem;
 
-  public ToggleBackBallStopperSolenoid(Pneumatics pnSubsystem) {
-    m_pnSubsystem = pnSubsystem;
+  public ToggleBackBallStopperSolenoid(Pneumatics pneumaticsSubsystem) {
+    m_pneumaticsSubsystem = pneumaticsSubsystem;
 
-    addRequirements(m_pnSubsystem);
+    addRequirements(m_pneumaticsSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_pnSubsystem.toggleBackBallStopperSolenoid();
+    m_pneumaticsSubsystem.toggleBackBallStopperSolenoid();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

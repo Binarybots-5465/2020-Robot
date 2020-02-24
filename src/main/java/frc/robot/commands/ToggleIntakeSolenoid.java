@@ -11,18 +11,18 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Pneumatics;
 
 public class ToggleIntakeSolenoid extends CommandBase {
-  private final Pneumatics m_pnSubsystem;
+  private final Pneumatics m_pneumaticsSubsystem;
 
-  public ToggleIntakeSolenoid(Pneumatics pnSubsystem) {
-    m_pnSubsystem = pnSubsystem;
+  public ToggleIntakeSolenoid(Pneumatics pneumaticsSubsystem) {
+    m_pneumaticsSubsystem = pneumaticsSubsystem;
 
-    addRequirements(m_pnSubsystem);
+    addRequirements(m_pneumaticsSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_pnSubsystem.toggleIntakeSolenoid();
+    m_pneumaticsSubsystem.toggleIntakeSolenoid();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
