@@ -1,0 +1,2 @@
+Concepts that might be useful later in design:
+ *We could use the ADXRS450 gyroscope mounted vertically to determine if we're level when climbing
