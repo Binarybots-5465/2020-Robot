@@ -109,4 +109,9 @@ public final class Constants {
                                                                                                         // prevent the mechanism from de-compressing. 
     public final static DoubleSolenoid.Value PCMBackBallStopperInitialPosition = DoubleSolenoid.Value.kReverse; //The solenoid that will stop the balls from falling out the back
                                                                                                                 // end will by default be not active
+
+    /* Control Panel Manipulator */
+
+    //Sets the Talon SRX's CAN ID.
+    public final static int controlPanelManipulatorCANID = 6;
 }
