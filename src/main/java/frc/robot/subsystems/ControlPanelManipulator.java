@@ -9,12 +9,13 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj.util.Color;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorSensorV3;
@@ -34,6 +35,8 @@ public class ControlPanelManipulator extends SubsystemBase {
   public enum ColorOptions {
     Red, Yellow, Blue, Green
   }
+
+  private WPI_TalonSRX controlPanelMotor = new WPI_TalonSRX(Constants.controlPanelManipulatorCANID);
 
   private static Map<Color, ColorOptions> colorResult = new HashMap<>();
 
@@ -62,10 +65,17 @@ public class ControlPanelManipulator extends SubsystemBase {
    * Gets the matched color of returned by the color sensor.
    * @return The enum value of ColorOptions of the closest matched values from the color sensor.
    */
-  public ColorOptions getMatchedColor() {
+  public ColorOptions getRawMatchedColor() {
     ColorMatchResult matchedColor = m_colorMatcher.matchClosestColor( getRawSensorColor() );
 
     return colorResult.get(matchedColor.color);
+  }
+
+  /**
+   * Sets the speed for the control panel manipulator's motor.
+   */
+  public void setManipulatorSpeed(double speed) {
+    controlPanelMotor.set(speed);
   }
 
   @Override
