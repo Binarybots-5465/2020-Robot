@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -27,30 +28,32 @@ public class ControlPanelManipulator extends SubsystemBase {
   private static final ColorMatch m_colorMatcher = new ColorMatch(); //The Rev Robotics ColorMatch class will provide methods to recognize colors.
 
   //These targets provide percentages of the RGB color spectrum that align with the Control Panel colors.
-  private static final Color redTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
-  private static final Color yellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
-  private static final Color blueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
-  private static final Color greenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
+  private static final Color m_redTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
+  private static final Color m_yellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
+  private static final Color m_blueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+  private static final Color m_greenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
 
   public enum ColorOptions {
     Red, Yellow, Blue, Green, Unknown
   }
 
-  private WPI_TalonSRX controlPanelMotor = new WPI_TalonSRX(Constants.controlPanelManipulatorCANID);
+  private WPI_TalonSRX m_controlPanelMotor = new WPI_TalonSRX(Constants.controlPanelManipulatorCANID);
 
-  private static Map<Color, ColorOptions> colorResult = new HashMap<>();
+  private static Map<Color, ColorOptions> m_colorResult = new HashMap<>();
+
+  private static DigitalInput m_manipulatorPositionIndicator = new DigitalInput(Constants.controlPanelManipulatorLimitSwitchDIO);
 
   public ControlPanelManipulator() {
-    m_colorMatcher.addColorMatch(redTarget);
-    m_colorMatcher.addColorMatch(yellowTarget);
-    m_colorMatcher.addColorMatch(blueTarget);
-    m_colorMatcher.addColorMatch(greenTarget); 
+    m_colorMatcher.addColorMatch(m_redTarget);
+    m_colorMatcher.addColorMatch(m_yellowTarget);
+    m_colorMatcher.addColorMatch(m_blueTarget);
+    m_colorMatcher.addColorMatch(m_greenTarget); 
     
     //Adds targets to the color map
-    colorResult.put(redTarget, ColorOptions.Red);
-    colorResult.put(yellowTarget, ColorOptions.Yellow);
-    colorResult.put(blueTarget, ColorOptions.Blue);
-    colorResult.put(greenTarget, ColorOptions.Green);
+    m_colorResult.put(m_redTarget, ColorOptions.Red);
+    m_colorResult.put(m_yellowTarget, ColorOptions.Yellow);
+    m_colorResult.put(m_blueTarget, ColorOptions.Blue);
+    m_colorResult.put(m_greenTarget, ColorOptions.Green);
   }
 
   /**
@@ -68,7 +71,7 @@ public class ControlPanelManipulator extends SubsystemBase {
   public ColorOptions getRawMatchedColor() {
     ColorMatchResult matchedColor = m_colorMatcher.matchClosestColor( getRawSensorColor() );
 
-    return colorResult.get(matchedColor.color);
+    return m_colorResult.get(matchedColor.color);
   }
 
   /**
@@ -98,7 +101,15 @@ public class ControlPanelManipulator extends SubsystemBase {
    * Sets the speed for the control panel manipulator's motor.
    */
   public void setManipulatorSpeed(double speed) {
-    controlPanelMotor.set(speed);
+    m_controlPanelMotor.set(speed);
+  }
+
+  /**
+   * Gets the limit switch's position attached to control panel manipulator to detect if it is up against an object.
+   * @return If the Manipulator is at the maximum it is pressed in. 
+   */
+  public boolean getManipulatorAtFinalPosition() {
+    return !m_manipulatorPositionIndicator.get(); //The actuator is positioned so that if the spring mechanism is not compressed the switch will be closed.
   }
 
   @Override

@@ -114,4 +114,7 @@ public final class Constants {
 
     //Sets the Talon SRX's CAN ID.
     public final static int controlPanelManipulatorCANID = 6;
+
+    //Sets the limit switch's DIO number.
+    public final static int controlPanelManipulatorLimitSwitchDIO = 0;
 }
