@@ -33,7 +33,7 @@ public class ControlPanelManipulator extends SubsystemBase {
   private static final Color greenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
 
   public enum ColorOptions {
-    Red, Yellow, Blue, Green
+    Red, Yellow, Blue, Green, Unknown
   }
 
   private WPI_TalonSRX controlPanelMotor = new WPI_TalonSRX(Constants.controlPanelManipulatorCANID);
@@ -69,6 +69,29 @@ public class ControlPanelManipulator extends SubsystemBase {
     ColorMatchResult matchedColor = m_colorMatcher.matchClosestColor( getRawSensorColor() );
 
     return colorResult.get(matchedColor.color);
+  }
+
+  /**
+   * Gets the matched color of what the field sensor sees.
+   * @return The enum value of ColorOptions of the matched value that the FMS sees on the Control Panel.
+   */
+  public ColorOptions getFieldMatchedColor() {
+    ColorOptions rawColor = getRawMatchedColor();
+
+    //The difference between the color that the color sensor detects and the FMS detects is offset by 1 wedge.
+    switch(rawColor) {
+      case Blue:
+        return ColorOptions.Red;
+      case Green:
+        return ColorOptions.Yellow;
+      case Yellow: 
+        return ColorOptions.Green;
+      case Red:
+        return ColorOptions.Blue;
+      default: //The color sensor detected an unknown color.
+        return ColorOptions.Unknown;
+    }
+
   }
 
   /**
