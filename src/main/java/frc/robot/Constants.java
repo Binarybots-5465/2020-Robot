@@ -34,6 +34,7 @@ public final class Constants {
     //Joystick Button Values
     public static int auxAButton = 1; //Represents the A button on the Horipad Gamecube controller.
     public static int auxXButton = 3; //Represents the X button on the Horipad Gamecube controller.
+    public static int auxBButton = 2; //Represents the B button on the Horipad Gamecube controller.
 
     /* Drive Constants */
 
