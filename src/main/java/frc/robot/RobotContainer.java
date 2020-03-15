@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import edu.wpi.first.wpilibj.DriverStation;
 
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.MoveManipulatorToFMSColor;
 import frc.robot.subsystems.ExampleSubsystem;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -21,7 +22,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
-
+import frc.robot.subsystems.ControlPanelManipulator;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Pneumatics;
 
@@ -43,6 +44,7 @@ public class RobotContainer {
   //Subsystems
   private final Drive m_driveSubsystem = new Drive();
   private final Pneumatics m_pnSubsystem = new Pneumatics();
+  private final ControlPanelManipulator m_CPMSubsystem = new ControlPanelManipulator();
 
   //HID
   public Joystick m_driveJoystick = new Joystick(0); //Defaults to ports 0 & 1 if configureJoysticks() can't find it later.
@@ -50,6 +52,7 @@ public class RobotContainer {
 
   public JoystickButton m_intakeMechanismToggleButton;
   public JoystickButton m_backBallStopperMechanismToggleButton;
+  public JoystickButton m_controlPanelManipulatorMoveToFMSColorButton;
   
   //Other
   private final DriverStation ds = DriverStation.getInstance();
@@ -106,6 +109,9 @@ public class RobotContainer {
     
     m_backBallStopperMechanismToggleButton = new JoystickButton(m_auxJoystick, Constants.auxXButton);
     m_backBallStopperMechanismToggleButton.whenPressed( new ToggleBackBallStopperSolenoid(m_pnSubsystem) );
+
+    m_controlPanelManipulatorMoveToFMSColorButton = new JoystickButton(m_auxJoystick, Constants.auxBButton);
+    m_controlPanelManipulatorMoveToFMSColorButton.whenPressed( new MoveManipulatorToFMSColor(m_CPMSubsystem) );
   }
 
 
