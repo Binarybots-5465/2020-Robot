@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.util.Color;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
@@ -54,6 +55,9 @@ public class ControlPanelManipulator extends SubsystemBase {
     m_colorResult.put(m_yellowTarget, ColorOptions.Yellow);
     m_colorResult.put(m_blueTarget, ColorOptions.Blue);
     m_colorResult.put(m_greenTarget, ColorOptions.Green);
+
+    m_controlPanelMotor.configFactoryDefault(Constants.talonEncoderTimeout);
+    m_controlPanelMotor.setNeutralMode(NeutralMode.Brake); //Prevents the motor from spinning after we've told it to stop.
   }
 
   /**
