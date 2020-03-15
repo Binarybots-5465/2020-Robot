@@ -80,10 +80,10 @@ public final class Constants {
     public final static int PIDDistanceSlot = 0;
     public final static int PIDTurningSlot = 1;
 
-    //Sets constant for the motor deadband for PID
+    //Sets constant for the motor deadband for PID.
     public final static double PIDNeutralDeadband = 0.04; // 4% deadband.
 
-    //Sets constant for the length of time the PID period runs
+    //Sets constant for the length of time the PID period runs.
     public final static int PIDClosedLoopTimeMs = 1; //1 ms per loop cycle.
 
     /* Pneumatics Constants */
@@ -103,17 +103,20 @@ public final class Constants {
     public final static int PCMBackBallStopperForwardPortID = 4;
     public final static int PCMBackBallStopperReversePortID = 5;
 
-    //Set's the solenoid's default position
-    public final static DoubleSolenoid.Value PCMIntakeInitialPosition = DoubleSolenoid.Value.kForward; //The intake will by default block balls from passing through it
+    //Set's the solenoid's default position.
+    public final static DoubleSolenoid.Value PCMIntakeInitialPosition = DoubleSolenoid.Value.kForward; //The intake will by default block balls from passing through it.
     public final static DoubleSolenoid.Value PCMClimberInitialPosition = DoubleSolenoid.Value.kForward; //The climber's stopper will by default be extended to allow to 
                                                                                                         // prevent the mechanism from de-compressing. 
     public final static DoubleSolenoid.Value PCMBackBallStopperInitialPosition = DoubleSolenoid.Value.kReverse; //The solenoid that will stop the balls from falling out the back
-                                                                                                                // end will by default be not active
+                                                                                                                // end will by default be not active.
 
     /* Control Panel Manipulator */
 
     //Sets the Talon SRX's CAN ID.
     public final static int controlPanelManipulatorCANID = 6;
+
+    //Sets the CPM's movement speed.
+    public final static double controlPanelManipulatorMovementSpeed = 0.25; //The CPM will operate at 25% of it's max speed.
 
     //Sets the limit switch's DIO number.
     public final static int controlPanelManipulatorLimitSwitchDIO = 0;

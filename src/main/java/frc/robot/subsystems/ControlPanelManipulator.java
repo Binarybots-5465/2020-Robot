@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.DriverStation;
 
@@ -22,6 +21,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorSensorV3;
+
+import frc.robot.Constants;
 
 public class ControlPanelManipulator extends SubsystemBase {
   
@@ -45,7 +46,7 @@ public class ControlPanelManipulator extends SubsystemBase {
 
   private static DigitalInput m_manipulatorPositionIndicator = new DigitalInput(Constants.controlPanelManipulatorLimitSwitchDIO);
 
-  private final DriverStation dsInstance = DriverStation.getInstance();
+  private final DriverStation m_dsInstance = DriverStation.getInstance();
 
   public ControlPanelManipulator() {
     m_colorMatcher.addColorMatch(m_redTarget);
@@ -109,7 +110,7 @@ public class ControlPanelManipulator extends SubsystemBase {
    * @return The enum value of ColorOptions of the assigned color designated by the FMS for the robot to move the Control Panel to.
    */
   public ColorOptions getFMSAssignedColor() {
-    String gsm = dsInstance.getGameSpecificMessage(); //The FMS will broadcast the current color assignment for the Control Panel through the Game Specific Message.
+    String gsm = m_dsInstance.getGameSpecificMessage(); //The FMS will broadcast the current color assignment for the Control Panel through the Game Specific Message.
     
     if(gsm.length() > 0)
     {
