@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj.DriverStation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,8 @@ public class ControlPanelManipulator extends SubsystemBase {
   private static Map<Color, ColorOptions> m_colorResult = new HashMap<>();
 
   private static DigitalInput m_manipulatorPositionIndicator = new DigitalInput(Constants.controlPanelManipulatorLimitSwitchDIO);
+
+  private final DriverStation dsInstance = DriverStation.getInstance();
 
   public ControlPanelManipulator() {
     m_colorMatcher.addColorMatch(m_redTarget);
@@ -99,6 +102,34 @@ public class ControlPanelManipulator extends SubsystemBase {
         return ColorOptions.Unknown;
     }
 
+  }
+
+  /**
+   * Gets the FMS assigned color from the Driverstation.
+   * @return The enum value of ColorOptions of the assigned color designated by the FMS for the robot to move the Control Panel to.
+   */
+  public ColorOptions getFMSAssignedColor() {
+    String gsm = dsInstance.getGameSpecificMessage(); //The FMS will broadcast the current color assignment for the Control Panel through the Game Specific Message.
+    
+    if(gsm.length() > 0)
+    {
+      switch (gsm.charAt(0)) //The GSM color is represented by a singular character which holds the first letter of provided.
+      {
+        case 'B' :
+          return ColorOptions.Blue;
+        case 'G' :
+         return ColorOptions.Green;
+        case 'R' :
+          return ColorOptions.Red;
+        case 'Y' :
+          return ColorOptions.Yellow;
+        default :
+          //Corrupt data.
+          return ColorOptions.Unknown;
+      }
+    } else {
+      return ColorOptions.Unknown; //No data was received.
+    }
   }
 
   /**
